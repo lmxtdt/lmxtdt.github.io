@@ -3,26 +3,291 @@
 <meta charset = "UTF-8">
 
 <head>
-	
-	<script>
-		function toggleDisplay(id){
-			//Toggle whether the div with the id is displayed
-			var div = document.getElementById(id);
+	<style>
+		body {
+			margin: 0;
+			padding: 0 5%;
 
-			if(div.style.display == "none"){
-				div.style.display = "block";
-			}
-			else{
-				div.style.display = "none";
-			}
+			/* font nonsense */
+			font-family: Arial, sans-serif;
+			line-height: 1.5em;
 		}
+		#bodyDiv {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.col {
+			margin: 0 20px;
+		}
+
+		.inside {
+			padding: 10px;
+		}
+
+		#leftCol {
+		}
+
+		#leftCol .inside {
+			position: sticky;
+			top: 0;
+		}
+
+		.navLink{
+			background: transparent;
+			border: none;
+			border-radius: 0;
+			padding: 0;
+			font-size: inherit;
+			display: block;
+			margin: 5px 0;
+			width: 100%;
+			text-align: left;
+		}
+
+		.navLink:hover, .navLink:active, .navLink:focus {
+			color: #f54f12;
+		}
+
+
+		#rightCol {
+		}
+
+		.section {
+		}
+
+		h1 {
+			width: fit-content;
+			margin: 20px auto;
+			line-height: 1em;
+		}
+
+		.subheading {
+			text-align: center;
+			font-size: larger;
+		}
+
+		h2 {
+			position: sticky;
+			top: 0px;
+			background: white;
+			padding: 10px 0px;
+			border-bottom: 2px solid #f54f12;
+			margin: 10px 0 0 0;
+		}
+
+		h3 {
+			border-bottom: 2px solid #f54f12;
+		}
+		.con {
+			display: none;
+			background: #EEE;
+			padding: 10px;
+		}
+
+		.con p:first-child {
+			margin-top: 0;
+		}
+
+		.tab {
+			background: #AAA;
+			color: #111;
+			border: 0;
+			padding: 10px;
+			margin: 0 5px 0 0;
+			border-radius: 8px 8px 0px 0px;
+			font-size: medium;
+		}
+
+		.tab:hover, .tab:focus {
+			background: #CCC;
+			color: #f54f12;
+		}
+
+		.activeTab {
+			background: #EEE;
+			color: #f54f12;
+		}
+
+	</style>
+	<script>
+		function scrollToId(id){
+			//scroll to an id
+			document.getElementById(id).scrollIntoView({block: "start", inline: "start", behavior: "smooth"});
+		}
+
+		function showTabContents(tabId, tabClass, contentId, contentClass){
+			//format the contents
+			//hide all other contents
+			var allContents = document.getElementsByClassName(contentClass);
+
+			for(con of allContents){
+				con.style.display = "none";
+			}
+
+			//show this contents
+			document.getElementById(contentId).style.display = "block";
+
+			//format the tabs
+			//deactivate all other tabs
+			var allTabs = document.getElementsByClassName(tabClass);
+			for(tab of allTabs){
+				tab.className = tab.className.replace(" activeTab", "");
+			}
+
+			document.getElementById(tabId).className += " activeTab";
+		}
+
 	</script>
 </head>
 
-<body>
-	
-<p>Text</p>
+<body><div id = "bodyDiv">
 
-</body>
+<div class = "col" id = "leftCol">
+	<div class = "inside">
+		<h3>Navigation</h3>
+		<input class = "navLink" type = "button" value = "Introduction" onclick = "scrollToId('intro');">
+		<input class = "navLink" type = "button" value = "The Books" onclick = "scrollToId('books');">
+		<input class = "navLink" type = "button" value = "The Foundling Story" onclick = "scrollToId('structure');">
+		<input class = "navLink" type = "button" value = "Social Immobility" onclick = "scrollToId('class');">
+		<input class = "navLink" type = "button" value = "Illegitimacy & Seduction" onclick = "scrollToId('illegitimacy');">
+		<input class = "navLink" type = "button" value = "The Narrative" onclick = "scrollToId('narrative');">
+		<input class = "navLink" type = "button" value = "Bibliography" onclick = "scrollToId('bibliography');">
+	</div>
+</div>
+
+<div class = "col" id = "rightCol">
+	<div class = "inside">
+		
+<h1>"Children of Nobody"</h1>
+<p class = "subheading">Foundlings in Eighteenth-Century British Literature</p>
+
+<div class = "section" id = "intro"></div>
+<h2>Introduction</h2>
+<p>Imagine you have just given birth to a child you cannot keep. Perhaps you can't afford to care for a child, or it is an illegitimate child that will ruin your reputation if you raise it. In an age before foster care, legal abortion, or even orphanages, what do you do? In England and countless other countries, many parents chose to leave their babies on the streets and doorsteps, in the hopes that someone else would find and care for them. These abandoned and then found babies were known as foundlings, and they were a poignant symbol in the minds of 18th century Brits.</p>
+<p>In 1739, Thomas Coram founded the London Foundling Hospital with the purpose of taking in  foundlings. While an institution to care for abandoned infants would presumably be universally supported, in reality its founding was debated. Those against the Hospital worried that it would encourage licentious behavior, because people had a convenient location to deposit their illegitimate children, and laziness among the poor, because they would not need to work to provide for every child they had.</p>
+<p>These arguments feature in the 1749 novel <em>The History of Tom Jones, a Foundling</em>, which was a widely successful book that followed the adventures of a foundling. However, it was neither the first nor last story featuring a foundling protagonist, which were not uncommon in mid-to-late 1700s British Literature.</p>
+<p>Like the orphan, the foundling is an appealing protagonist in many ways. They carry an inherent mystery in their origins, which can be revealed in an exciting twist at the end of the story. Because they came from &quot;nothing&quot;, they face immense difficulties in the world, and their eventual rise is all the more impressive. Of course, this attraction to foundlings in stories does not originate from the 1700s; from Moses, hidden by the Nile, to Romulus and Remus, the mythical founders of Rome, the abandoned baby is a classic figure throughout mythology.</p>
+<p>One of the most commonly mentioned appeals of a foundling character is that foundlings function as a blank slate; without a family, they could become anyone. Through them, storytellers can explore the question of nature versus nurture. However, as I will argue later, the foundling <em>isn&apos;t</em> a blank slate; in both reality and fiction, foundlings were assumed to be, and treated as, bastard children of poor &quot;whores&quot; and &quot;sluts.&quot;</p>
+<br>
+<p>(It should be noted that while the wards of the London Foundling Hospital were called foundlings, and here I will treat them as such, they technically were not foundlings. While other foundling hospitals throughout Europe used various setups to allow someone to deposit a baby without being witnessed, so they arguably could still be called abandoned, the babies of the London Foundling Hospital were handed over in a very public manner. On the evenings when the Hospital was open for admissions, mothers lined up and drew from a ballot to see whether their child would be accepted or rejected. They were watched by not only the staff of the Hospital, but also wealthy spectators who paid to be there. These babies were never abandoned, and are not literally foundlings, though it can be assumed that many of them would have been foundlings if the Hospital did not exist.)</p>
+
+<div class = "section" id = "books"></div>
+<h2>The Books</h2>
+<p>In 1749, <em>The History of Tom Jones, a Foundling</em> was published. It may be the most successful novel featuring a foundling protagonist. It was very popular when it was released, selling 10,000 copies in its first year, and more recently has inspired multiple movie adaptations, play adaptations, and a BBC miniseries.</p>
+<p>Throughout the 1700s, multiple other novels and stories followed foundling protagonists. The other two notably successful works were <em>The Fortunate Foundlings</em>, published in 1744, and <em>The Foundling</em>, a play released in 1748. Both in foundling fiction that was famous and that which wasn&apos;t, common plot elements, themes, and attitudes can be found.</p>
+<p>To investigate the depiction of foundlings in 18th century literature, I examined nine novels and short stories published in the by 1800 that featured foundling protagonists.</p>
+<p>They are listed by publication year.</p>
+<ul>
+<li>1744: <em>The Fortunate Foundlings</em>, by Eliza Haywood</li>
+<li>1748: <em>The Foundling</em>, by Edward Moore</li>
+<li>1749: <em>The History of Tom Jones, a Foundling</em>, by Henry Fielding</li>
+<li>1751: <em>The Female Foundling</em>, unknown author</li>
+<li>1786: <em>The Kentish Curate; or, the History of Lamuel Lyttleton</em>, by Henry Lemoine</li>
+<li>1787: <em>The Foundling; or the History of Lucius Stanhope</em>, by Richard Johnson</li>
+<li>1790 (?): <em>The History of Maria Farrell, or the Beautiful Foundling</em>, unknown author</li>
+<li>1795: <em>The History of Little Jack</em>, by Thomas Day</li>
+<li>1800 (?): <em>The Memoris [sic] of Lucy Harris, a Foundling</em>, by Lucy Cooper</li>
+</ul>
+<p>(For convenience, all titles which include the foundling&apos;s name will be referenced by just the name of the foundling.)</p>
+<p>These stories were found by searching the English Short Title Catalogue for works with the word "foundling" in any field. I did not read two stories in the search results, because I could not find a digitized version of either of them. (They are entitled <em>Henry; or, the Foundling</em> and <em>The History of Benjamin St Martin</em>.)</p>
+<p>While all featuring foundlings, these works were varied in audience and content. They are well-balanced in terms of gender; there are five male and five female foundlings (<em>The Fortunate Foundlings</em> follows twins). The length of these stories varied from around 25 pages to around 1000; the longer stories were released in multiple volumes. Two of the shorter stories, <em>Lucius Stanhope</em> and <em>Little Jack</em>, were written for children, but it is unclear who the audience was for the other short story, <em>Maria Farrell</em>, which is around 40 pages.</p>
+
+
+<div class = "section" id = "structure"></div>
+<h2>The Structure of a Foundling Story</h2>
+<p>Many of the examined foundling stories followed a similar structure, with specific shared beats. Instead of summarizing the plot of any of the nine stories, I have summarized the typical "foundling story."</p>
+
+<input type = "button" value = "Discovery" id = "disTab" class = "tab activeTab" onclick = "showTabContents('disTab', 'tab', 'disCon', 'con');"><!--
+--><input type = "button" value = "Upbringing" id = "upTab" class = "tab" onclick = "showTabContents('upTab', 'tab', 'upCon', 'con');"><!--
+--><input type = "button" value = "Adventures" id = "adTab" class = "tab" onclick = "showTabContents('adTab', 'tab', 'adCon', 'con');"><!--
+--><input type = "button" value = "Reveal" id = "revTab" class = "tab" onclick = "showTabContents('revTab', 'tab', 'revCon', 'con');"><!--
+
+
+--><div class = "con" id = "disCon" style = "display: block">
+	<h3>Discovery of Child</h3>
+	<p>Naturally, the foundling story begins when a baby is found. This can be in a private location, like someone&apos;s garden (<em>The Fortunate Foundlings</em>), doorstep (<em>Lucius Stanhope</em>) or even bed (<em>Tom Jones</em>), or a public location, like a basket in a river (<em>Lucy Harris</em>) or a secluded building (<em>Lamuel Lyttleton</em>). Sometimes, a note was left pleading for the baby to be cared for and naming the child. (<em>The Fortunate Foundlings</em>, <em>Lucius Stanhope</em>, <em>Lucy Harris</em>)</p>
+
+	<p>This occurred in six of the nine stories. The exceptions are:</p>
+	<ul>
+	<li><em>The Foundling</em>: The play begins begins eighteen years after the foundling&apos;s supposed discovery on a woman&apos;s doorstep, but it is eventually revealed that said woman lied and the girl is not actually a foundling.</li>
+	<li><em>The Female Foundling</em>: The protagonist was was birthed in a hotel, and her birth mother arranged for her to be cared by the owner of the hotel. </li>
+	<li><em>Maria Farrell</em>: Despite the full title being <em>The History of Maria Farrell, or the Beautiful Foundling</em>, Maria is actually an orphan. The story begins with her family&apos;s murder by four assassins.</li>
+	</ul>
+</div>
+<div class = "con" id = "upCon">
+	<h3>Upbringing by Noble Family</h3>
+	<p>The child is taken in by a noble family and raised as one of their own. They may be raised alongside a biological child of the family (<em>Tom Jones</em>, <em>Lucius Stanhope</em>), and if so, the foundling is not neglected in comparison, but the difference of their status is well-known and present in the back of their minds.</p>
+
+	<p>This occurred in six of the nine stories. The exceptions are:</p>
+	<ul>
+	<li><em>The Female Founding</em>: The protagonist is raised by the owner of a French hotel.</li>
+	<li><em>The Foundling</em>: I've counted this as both fitting and not fitting this beat. The foundling was raised by a nurse for twelve years, then sold to a man, but more recently she was taken in as the ward of a noble family.</li>
+	<li><em>Little Jack</em>: Jack is raised by a poor old veteran.</li>
+	<li><em>Lucy Harris</em>: Lucy is raised by a poor fisherman and his wife.</li>
+	</ul>
+</div>
+<div class = "con" id = "adCon">
+	<h3>Adventures Alone</h3>
+	<p>The foundling parts from their adoptive family and goes on various adventures that form the bulk of the story. This parting may be because they angered their family (<em>Tom Jones</em>, <em>Lucius Stanhope</em>) or because their family died (<em>Maria Farrell</em>, <em>Little Jack</em>).</p>
+
+	<p>This occurred in seven of the nine stories. The exceptions are:</p>
+	<ul>
+	<li><em>The Foundling</em>: The play covers the drama between two families, and is relatively static in setting and cast.</li>
+	<li><em>Lucy Harris</em>: The story focuses on the romantic drama with Lucy, and she only separates with her adoptive family to go on a vacation at the end of the story.</li>
+	</ul>
+</div>
+<div class = "con" id = "revCon">
+	<h3>Reveal of Birth Family</h3>
+	<p>Near the end of the story, the foundling discovers who their birth family is. This is always a noble family, and may be a member of their adoptive family (<em>The Fortunate Foundlings</em>,<em> Tom Jones</em>). There is a joyful reunion and an explanation of how and why they were abandoned. The backstory may involve a love affair between unmarried people (<em>The Fortunate Foundlings</em>,<em> Tom Jones</em>), who might have intended to marry and reclaim their child, but failed (<em>The Female Foundling</em>, <em>Lucy Harris</em>) or the child may have been legitimate, but the father was banished and the mother, if alive, could not care for the child (<em>The Foundling</em>, <em>Lamuel Lyttleton</em>).</p>
+	<p>The foundling then lives happily with their newfound birth family, enjoying the wealth, titles, and privileges afforded to them.</p>
+
+	<p>This occurred in seven of the nine stories. The exceptions are:</p>
+	<ul>
+	<li><em>Lucius Stanhope</em>: The birth family is never revealed. Lucius inherits the wealth of his father-in-law, a very successful attorney.</li>
+	<li><em>Little Jack: </em>The birth family is never revealed. Jack becomes a successful factory owner.</li>
+	</ul>
+</div>
+
+<div class = "section" id = "class"></div>
+<h2>Social (Im)mobility</h2>
+<p>I also found a couple common themes throughout these stories.</p>
+<p>The first is class, which is inherent in the common structure of a foundling story. Out of the nine stories, five feature foundlings who were presumed to have poor birth families, but were raised by nobility, and in the end are fully brought to noble status by the discovery of their wealthy birth family. Two stories feature foundlings who were presumed to have wealthy birth families, but were raised by a working-class parent or parents, and in the end are returned to their noble status after finding their aristocratic birth families. The remaining two never reveal the foundlings&apos; birth families, though they rise to a wealthy status through their own hard work and luck.</p>
+<p>There&apos;s a noticeable discomfort with the idea of someone rising above the status of their birth. Excepting the last two stories, the foundlings are only raised to a high status when it&apos;s revealed they have been nobility all along. It is treated as natural by both the foundlings and the people around them that how their treatment in society is completely dependent upon their birth families. The dramatic contrast in the status of the foundling before and after the reveal of the birth family is a ripe field for questioning whether birth should matter that much, when the foundling is treated dramatically differently despite being the same person. However, I found that none of the stories examined this topic from this lens to question class boundaries.</p>
+
+<!--<p>
+Two stories allow the foundlings to rise through their own merit; interestingly, these two stories were written for children, so they read mainly as moral tales encouraging children to work hard and make prudent decisions. This is seen especially in <em>Lucius Stanhope</em>, where Lucius is constantly contrasted with the son of his adoptive family, young Sir John. Lucius is hard-working, diligent, and prudent; young Sir John is lazy, arrogant, and irresponsible. Lucius ends up inheriting his father-in-law&apos;s wealth, ending up &quot;nearly on a level with the young Sir John&quot;, but then young Sir John wastes all his money through gambling and is abandoned by his shallow friends. This represents more social mobility than the other foundling stories, but the overly didactic tone and audience of children makes it unclear whether [something idealistic, or actual attitudes] At the very end of the story, after depending on Lucius&apos;s charity and becoming a better person, young Sir John inherits his uncle&apos;s wealth and returns to his previous economic status, [something about the rightness of] [nobility staying nobility] </p>
+-->
+
+<p> The concept that one should only marry within their class is also present and not very challenged. For example, in both <em>The Foundling</em> and <em>Lucy Harris</em>, the female foundlings fall in love with young noblemen, but due to social reservations against marrying outside of class, do not truly court each other or marry until after the foundlings&apos; noble origins are revealed. In <em>Lucy Harris</em>, these reservations come from the foundling herself, and because she is a virtuous and admirable heroine, the narrative seems to imply that this is a correct attitude.</p>
+<p>In general, while a foundling is supposedly a blank slate, it really isn&apos;t. Foundlings are confined to the assumed poverty of their birth, and are only liberated when their aristocratic origins are revealed. Even when raised by nobility and treated like a noble child, no one forgets that they are, as a character in <em>Tom Jones</em> says, "children of nobody," supported by the charity of their adoptive parents.</p>
+
+<div class = "section" id = "illegitimacy"></div>
+<h2>Illegitimacy and Seduction</h2>
+<p>The other stain foundlings carry is the assumption of illegitimacy. This is especially found in <em>Tom Jones</em>, which was influenced by the debate for and against the establishment of the London Foundling Hospital. Tom Jones himself is stigmatized as a bastard the moment he is found by the gentleman Mr. Allworthy and his housekeeper, Mrs. Deborah. She immediately starts to rant about &quot;the hussy its mother&quot; and disparages the baby, saying things like &quot;How it stinks! It doth not smell like a Christian.&quot; She goes so far as to suggest that Mr. Allworthy put the baby on the church&apos;s doorstep, saying it has a 2/3 chance of surviving the night. As for the other 1/3, &quot;it is, perhaps, better for such creatures to die in a state of innocence, than to grow up and imitate their mothers; for nothing better can be expected of them.&quot; Mr. Allworthy does not take her advice and instead decides to care for the baby, but even he tells the presumed birth mother, &quot;you have in a manner laid your sins at my door.&quot;</p>
+<p>As this shows, foundlings were considered, in many ways, to be an embodiment of the sins of their parents, who had sex outside of marriage. This joined together with their assumed poverty to further lower their status. While the implication of illegitimacy was not discussed much in the other works I found, perhaps because it would be considered vulgar, this had a large impact on real-life foundlings. Detractors of the London Foundling Hospital did not want to discourage marriage or reward people for having pre-marital sex by taking in illegitimate babies. In response to this stigma, some women leaving babies at the Hospital indicated that they were married, either in notes left with the child or in the admission forms. Even in <em>Lamuel Lyttleton</em>, the note left with the foundling insists that &quot;He is not a bastard.&quot; The women were likely afraid of their children being treated poorly if they were viewed as illegitimate, which was the default assumption. They may also have been afraid of being negatively judged themselves.</p>
+<p>There was a similar avoidance of associating birth parents with the stigma of pre-marital sex in a few of the books I examined. In two, the parents were married, but the father was banished and unable to care for the child. In two other books, the parents had intended to be married, or were secretly married, but complications prevented them from being publicly recognized as spouses before the child was born. These complex explanations could have been the authors' methods of shielding the otherwise good birth parents from the moral taint of having a child out of wedlock.</p>
+<p>In reality, banishment and secret marriages were not common or believable enough to be used as a defense for having an illegitimate child. Instead, women usually claimed they had been seduced by the father. They only agreed to sex <em>after</em> being promised marriage, but the father disappeared and refused to take responsibility for their promise or child. This defense can be found in the accounts of mothers who left babies at the London Foundling Hospital, and even in a couple of the stories I examined.</p>
+<p><em>Tom Jones</em>, being the only book willing to talk explicitly about illegitimacy and sex, brings up this concept of seduction a couple times. The local town and a secondary character speculate that Tom Jones&apos;s mother had been seduced and then abandoned. Later in the book, Tom Jones meets and helps a woman who had experienced this type of seduction and betrayal. In both cases, the father is villified, and the mother is viewed as, while perhaps unwise, pitiable and not to blame. It seems that most people believed and accepted this defense, possibly because this <em>did</em> occur often, so it's not strange that I found it in a couple stories.</p>
+<p>This story of seduction is also the plot of <em>The Perjured Lover</em>, a short story published around 1790. It follows the romance between two young adults which turns tragic after the man leaves to go to college while the woman finds herself pregnant. She gives birth, sends her new son to the Foundling Hospital, falls into a depression and dies. I have not counted this story as one of the foundling narratives I&apos;ve examined because the foundling plays a minor role, but it reinforces the idea that in fiction, foundlings were representative of seduction, pre-marital sex, and illegitimacy.</p>
+
+<div class = "section" id = "narrative"></div>
+<h2>The Narrative Around Foundlings</h2>
+<p>While a baby with unknown parentage theoretically carries no history and infinite potential, foundlings in fiction were limited by the associations based in reality. Foundlings were often from poor families and illegitimate; these assumptions are replicated in stories depicting them. However, the themes of class, seduction, and illegitimacy were not only in foundling stories because they were accurate to real life. They were also influenced by the nature of who read and wrote these stories, and the nature of the story.</p>
+<p>In 1700s Britain, not everyone was literate. Naturally, novels and written stories were affected by the inclinations of the upper class. The discussion around foundlings was also dominated by the upper class, who donated to the London Foundling Hospital or debated whether it would encourage vice.</p>
+<p>Then, it&apos;s no surprise that class is depicted so strictly as is in the foundling narratives. Even when raised by aristocrats, the foundlings never forget that they are not the same. An emphasis on social mobility, equality regardless of socioeconomic status, and questioning of class boundaries would not be likely to appeal to neither the authors nor the readers. So, foundlings are largely defined by the class of their birth, and their own actions cannot change that.</p>
+<p>The often condescending moralizing about pre-marital sex and illegitimate children could also reflect the worries of the upper class. Legitimacy matters more to families who have titles, land, and wealth to pass down. But I can't claim that class is the only reason these topics were so common in foundling narratives; they are also exciting and enjoyable elements to add to story. Romance is an emotional subject that many readers enjoy, bastards are inherently underdog characters, and complex explanations of how two young people intended, but failed, to publicly marry are fun to follow. The primary purpose of a novel is to entertain, and it's important to remember this when evaluating the content of fiction.</p>
+
+<p>That being said, I think the greatest value of these foundling stories is the way they depict the social climate of the time. They are not very realistic in how they depict foundlings, who usually were not born into or raised by nobility, so research into actual foundlings of the time would have to go elsewhere. Reading foundling stories centuries later, it's the strong and dramatic social beliefs surrounding foundlings and their implied baggage that will stick with me.</p>
+
+<div class = "section"id = "bibliography"></div>
+<h2>Bibliography</h2>
+<p>Orphans of Empire; the ten books of course; ESTC, Gutenberg.org, Gale Primary Sources</p>
+<p>note to self: actually format this</p>
+
+	</div>
+</div>
+
+</div></body>
 
 </html>
