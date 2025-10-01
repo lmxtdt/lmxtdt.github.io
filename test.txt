@@ -2,3 +2,4 @@ basic change
 github change
 new branch change
 foo
+bar
